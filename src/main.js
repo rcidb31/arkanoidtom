@@ -1,4 +1,5 @@
      /*//////////////////ESTRUCTURA CANVAS ///////////////////////////*/
+
     
      /* Seleccionamos el canvas y el contexto 2d */
      const canvas = document.querySelector('canvas'); // querySelector selecciona el primer elemento que coincida con el selector
@@ -79,6 +80,10 @@
      }
 
 
+
+
+
+
      /*/////////////////////////PELOTA///////////////////////////*/
     
      
@@ -103,8 +108,8 @@
     
     
      /*Funcion dibujar bola*/
+     
      function drawBall() {
-
         ctx.beginPath(); // comenzamos a dibujar llamamos al contexto 2d
         ctx.arc(x, y, ballRadius, 0, Math.PI *2); // dibujamos un circulo
         ctx.fillStyle = '#39ff14'; // color del circulo
@@ -119,14 +124,17 @@
       function ballMovement(isBallSameXasPaddle, isBallSameYasPaddle) {
        
        // si la bola toca los bordes laterales invertimos la direccion
+
        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { 
            dx = -dx; // invertimos el signo  de la  direccion 
        }
        // si la bola toca el borde superior invertimos la direccion
+
        if (y + dy < ballRadius) { 
            dy = -dy;
        } 
        // si la bola toca el suelo invertimos la direccion
+
        else if (y + dy > canvas.height - ballRadius) { 
            
            if (x > paddleX && x < paddleX + paddleWidth) { 
@@ -140,12 +148,11 @@
        }
 
       //definimos la velocidad de la bola con el incremento de x y y
+
        x += dx, // incremento en valor de x la velocidad de la bola
        y += dy // movemos la bola en el eje y
     }
    
-
-    
      /*////////////////////////// limpiar canvas ////////////////////////*/
 
      // para que no renderice los frames anteriores aplicamos clearcanvas // 
@@ -153,8 +160,10 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height); // limpiamos el canvas
      }
     
-    
-   
+
+
+
+     
      /*////////////////////////// ladrillos ///////////////////////////*/
     
      function drawBricks() {}
@@ -188,8 +197,8 @@
      ballMovement(); 
      // movemos la pala
      paddleMovement(); 
-       
-     window.requestAnimationFrame(draw); // requestAnimationFrame es una funcion que se ejecuta recursivamente
+      // requestAnimationFrame es una funcion que se ejecuta recursivamente 
+     window.requestAnimationFrame(draw); 
     }
 
      /*////////////////////////// Iniciaciones ///////////////////////////*/
