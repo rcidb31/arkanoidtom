@@ -1,25 +1,4 @@
-<title>Arkanoid Raul Cid js </title>
-
-<style>
-    body {
-        background-color: 111;
-    }
-
-    canvas {
-     border: 4px solid #fff;
-     border-bottom: transparent;
-     background-color: black;
-     margin: 0 auto;
-     display: block;
-
-    }
-</style>
-
-<!-- creamos un canvas -->
-<canvas></canvas>
-
-<!--JS-->
-<script>
+     /*//////////////////ESTRUCTURA CANVAS ///////////////////////////*/
     
      /* Seleccionamos el canvas y el contexto 2d */
      const canvas = document.querySelector('canvas'); // querySelector selecciona el primer elemento que coincida con el selector
@@ -36,6 +15,7 @@
      const paddleWidth = 75; // ancho de la pala
 
      /* posicion en x y pala en lienzo canvas */
+
      let paddleX = (canvas.width - paddleWidth) / 2; // posicion en el centro del canvas
      let paddleY = canvas.height - paddleHeight; // posicion en la parte inferior del canvas
  
@@ -45,6 +25,7 @@
      let leftPressed = false; // si la tecla izquierda esta presionada
 
      /*Sencibilidad de pala*/
+
      const paddle_sensitive = 10; // sensibilidad de la pala
 
      /*Funcion dibujar pala*/
@@ -60,12 +41,14 @@
      }
     
      /*funcion que escucha eventos movimiento de teclas */
+
      function initEvent() {
         document.addEventListener('keydown', keyDownHandler, false); // escuchamos cuando se presiona una tecla
         document.addEventListener('keyup', keyUpHandler, false); // escuchamos cuando se suelta una tecla
 
 
      /* funcion que escucha evento hacia abajo*/   
+
         function keyDownHandler(e) {
             if (e.key === 'Right' || e.key === 'ArrowRight') {
                 rightPressed = true;
@@ -76,6 +59,7 @@
      }
     
      /* funcion que escucha eventos tecla arriba */
+
         function keyUpHandler(e) {
             if (e.key === 'Right' || e.key === 'ArrowRight') {
             rightPressed = false;
@@ -85,6 +69,7 @@
      }
 
      // funcion para mover la pala 
+
         function paddleMovement() {
            if (rightPressed && paddleX < canvas.width - paddleWidth) {
             paddleX += paddle_sensitive;
@@ -93,20 +78,26 @@
         }
      }
 
+
+     /*/////////////////////////PELOTA///////////////////////////*/
+    
      
-
-    
-     /*/////////////////////////Pelota///////////////////////////*/
-    
-
+     /* condiciones cuando la bola toca la paleta en toda su extension */
+     
+     const isBallSameXasPaddle = x => x > paddleX && x < paddleX + paddleWidth; // si la bola esta en la misma posicion que la pala X 
+     const isBallSameYasPaddle = y => y > paddleY; // si la bola esta en la misma posicion que la pala en la Y 
+     
      /* Constante radio pelota */
-     const ballRadius = 10; // radio de la bola
+
+     const ballRadius = 10; 
    
      /* posicion en x y bola en lienzo canvas */
+
      let x = canvas.width / 2;  // posicion en el centro del canvas
      let y = canvas.height - 30; // posicion en la parte inferior del canvas
 
      // velocidad de la bola
+
      let dx = 2;
      let dy = -2;
     
@@ -125,7 +116,7 @@
      /* funcion para mover la bola entienda los bordes del canvas y sus coliciones 
       y cambie de direccion al ser multiplicado por -1 o -dx */
     
-      function ballMovement() {
+      function ballMovement(isBallSameXasPaddle, isBallSameYasPaddle) {
        
        // si la bola toca los bordes laterales invertimos la direccion
        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { 
@@ -205,5 +196,3 @@
 
     draw(); // llamamos a la funcion draw para que se ejecute recursivamente
     initEvent(); // llamamos a la funcion initEvent para que escuche los eventos de teclado
-
-</script>
