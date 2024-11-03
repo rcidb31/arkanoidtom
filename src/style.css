@@ -1,31 +1,27 @@
-   h1 {
-       text-align: center;
-       color: greenyellow;
-       font-size: 2em;
-       margin-top: 50px;
-   }
+h1 {
+    text-align: center;
+    color: greenyellow;
+    font-size: 2em;
+    margin-top: 50px;
+}
 
+h2 {
+    text-align: center;
+    color: red;
+    font-size: 2em;
+    margin-top: 50px;
+}
 
-   h2 {
-       text-align: center;
-       color:red;
-       font-size: 2em;
-       margin-top: 50px;
-   }
-   
-   body {
-        background-color: black;
-        background-size: contain
-    
+body {
+    background-color: black;
+    background-size: contain; /* Agregado punto y coma aquí */
+}
 
-    }
-
-    canvas {
-     border: 4px solid #fff;
-     border-bottom: transparent;
-     background : url('/public/bg1.png');
-     background-repeat: repeat;
-     margin: 0 auto;
-     display: block;
-
-    }
+canvas {
+    border: 4px solid #fff;
+    border-bottom: transparent;
+    background: url('/bg1.png'); /* Cambiado para apuntar a la raíz pública */
+    background-repeat: repeat;
+    margin: 0 auto;
+    display: block;
+}
