@@ -101,9 +101,9 @@ const brickRowCount = 6;
 const brickColumnCount = 13;
 const brickWidth = 30;
 const brickHeight = 14;
-const brickPadding = 2;
+const brickPadding = 0;
 const brickOffsetTop = 30;
-const brickOffsetLeft = 16;
+const brickOffsetLeft = 20;
 const bricks = [];  
 
 const brick_status = 
@@ -112,7 +112,7 @@ const brick_status =
     DESTROYED: '1',
 };
 
-// creamos un array de 13 columnas y 6 filas
+// creamos un array de 13 columnas y 6 filas matriz de vbrick
 
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
@@ -151,6 +151,32 @@ function drawBricks() {
     }
 }
 
+/*////////////////////////// COLICIONES //////////////////////////////*/
+
+
+
+
+function collisionDetection() {
+    for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+            const currentBrick = bricks[c][r];
+            if (currentBrick.status === brick_status.DESTROYED) continue;
+
+            const isBallsameXasBrick = 
+                x > currentBrick.x &&
+                x < currentBrick.x + brickWidth;
+
+            const isBallsameYasBrick =
+                y > currentBrick.y &&
+                y < currentBrick.y + brickHeight;
+
+            if (isBallsameXasBrick && isBallsameYasBrick && currentBrick.status === brick_status.ACTIVE) {
+                dy = -dy;
+                currentBrick.status = brick_status.DESTROYED;
+            }
+        }
+    }
+}
 
 /*////////////////////////// LIMPIAR CANVAS ////////////////////////*/
 
@@ -167,6 +193,7 @@ function draw() {
     ballMovement();
     paddleMovement();
     drawBricks();
+    collisionDetection();
     window.requestAnimationFrame(draw);
 }
 
