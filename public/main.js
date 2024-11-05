@@ -136,13 +136,13 @@ function drawBricks() {
             if (currentBrick.status === brick_status.DESTROYED) continue;
 
             // Calcular clipX en función del color actual
-            const clipX = (currentBrick.color - 1) * 17; // Asumiendo 25 píxeles de ancho por color en el sprite
+            const clipX = (currentBrick.color - 1) * 16; // Asumiendo 25 píxeles de ancho por color en el sprite
 
             ctx.drawImage(
                 $bricks,
                 clipX,       // posición x en el sprite
-                11,          // posición y en el sprite (ajústalo si es necesario)
-                17,          // ancho de cada color en el sprite
+                0,          // posición y en el sprite (ajústalo si es necesario)
+                16,          // ancho de cada color en el sprite
                 8,          // alto de cada color en el sprite
                 currentBrick.x, currentBrick.y,
                 brickWidth, brickHeight
