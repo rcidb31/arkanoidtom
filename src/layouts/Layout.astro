@@ -31,6 +31,7 @@ const { title } = Astro.props;
 		<div class="game-container">
 			<div class="game-ui">
 				<div class="score">Puntos: <span id="score-value">0</span></div>
+				<div class="level">Nivel: <span id="level-value">1</span></div>
 				<div class="lives">Vidas: <span id="lives-value">3</span></div>
 			</div>
 			<canvas id="game"></canvas>
@@ -190,14 +191,14 @@ const { title } = Astro.props;
 		margin-bottom: 5px;
 	}
 
-	.score, .lives {
+	.score, .lives, .level {
 		color: #fff;
 		font-size: 1.1em;
 		font-weight: bold;
 		text-shadow: 0 0 5px var(--neon-green);
 	}
 
-	#score-value, #lives-value {
+	#score-value, #lives-value, #level-value {
 		color: var(--neon-green);
 	}
 
